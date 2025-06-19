@@ -1,0 +1,170 @@
+=========================Question: Creating a Complex HTML Table for Student Records=============================================================================
+
+Objective:
+Task is to create a complex HTML table for displaying student data. 
+
+Table Structure Description:
+The table should have a header section (<thead>) and a body section (<tbody>).
+1. Table Header (<thead>):
+The header is composed of three distinct rows with several merged cells.
+Header Row 1 (Top Level):
+The first cell is labeled "Full Name" and must span across 2 columns.
+The second cell is labeled "Id" and must span down across all 3 header rows.
+The third cell is labeled "Marks" and must span across 2 columns.
+The fourth cell is labeled "Semester" and must span across 4 columns.
+Header Row 2 (Middle Level):
+This row contains the sub-headers.
+Under "Full Name", there are two separate cells: "F.N" (First Name) and "L.N" (Last Name).
+The "Id" cell from the row above continues to occupy its space here.
+Under "Marks", there are two cells: "10th" and "12th". Each of these must span down across 2 rows (this row and the one below it).
+Under "Semester", there are two cells: "1st" and "2nd". Each of these must span across 2 columns.
+Header Row 3 (Bottom Level):
+This is the most granular header row.
+The "Id", "10th", and "12th" cells from the rows above continue to occupy their space.
+Under the "1st" semester cell, there are two separate cells: "T" (Total marks) and "%" (percentage).
+Under the "2nd" semester cell, there are also two separate cells: "T" and "%".
+2. Table Body (<tbody>):
+Following the header, the table body should contain exactly four empty data rows.
+Each data row must have the correct number of cells to align perfectly with the columns defined in the bottom-most level of the header.
+Your final output should be a single HTML file that uses <table>, <thead>, <tbody>, <tr>, <th>, <td>, colspan, and rowspan to accurately construct this layout.
+
+======================================================HTML Solution==============================================================================================
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Table</title>
+    <style>
+        /* Basic styling for readability */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 90%;
+            margin: 25px auto;
+            border-collapse: collapse;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 12px 15px;
+            text-align: center;
+        }
+        thead {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+        thead th {
+            font-weight: bold;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Student Marks Table</h1>
+
+<table>
+    <thead>
+        <!-- ================== -->
+        <!-- HEADER ROW 1       -->
+        <!-- ================== -->
+        <tr>
+            <th colspan="2">Full Name</th>
+            <th rowspan="3">Id</th>
+            <th colspan="2">Marks</th>
+            <th colspan="4">Semester</th>
+        </tr>
+
+        <!-- ================== -->
+        <!-- HEADER ROW 2       -->
+        <!-- ================== -->
+        <tr>
+            <!-- THE FIX: F.N and L.N must span 2 rows to leave space for T and % in the next row -->
+            <th rowspan="2">F.N</th>
+            <th rowspan="2">L.N</th>
+            
+            <!-- 10th and 12th also span 2 rows -->
+            <th rowspan="2">10th</th>
+            <th rowspan="2">12th</th>
+            
+            <!-- These span horizontally to group T and % -->
+            <th colspan="2">1st</th>
+            <th colspan="2">2nd</th>
+        </tr>
+        
+        <!-- ================== -->
+        <!-- HEADER ROW 3       -->
+        <!-- ================== -->
+        <tr>
+            <!-- These now correctly fall under "1st" and "2nd" semester columns -->
+            <th>T</th>
+            <th>%</th>
+            <th>T</th>
+            <th>%</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- 4 data rows, now with the correct 9 columns -->
+        <tr>
+            <td></td> <!-- F.N -->
+            <td></td> <!-- L.N -->
+            <td></td> <!-- Id -->
+            <td></td> <!-- 10th -->
+            <td></td> <!-- 12th -->
+            <td></td> <!-- 1st-T -->
+            <td></td> <!-- 1st-% -->
+            <td></td> <!-- 2nd-T -->
+            <td></td> <!-- 2nd-% -->
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
