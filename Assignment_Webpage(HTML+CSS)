@@ -1,0 +1,143 @@
+================================================Question================================================================================================
+Refer to the layout design of a Zomato-like webpage shown in the image. Using HTML and CSS, create the layout according to the following specifications:
+
+The top header should display "Zomato Page" with a background image.
+
+There are three item sections (I1, I2, I3) each consisting of:
+
+An image placeholder.
+
+A <p> tag for the item name (P1, P2, P3) with respective colors:
+
+P1 → blue
+
+P2 → brown
+
+P3 → green
+
+A price under each item, wrapped in a <span> tag, and styled in gray.
+
+Two location <p> elements:
+
+"Location 1 : Delhi"
+
+"Location 2 : Mumbai"
+These should use a CSS class selector that sets their background color to yellow.
+
+A footer at the bottom displaying:
+"Copyright 2022. All right reserved"
+============================================================================================================================================
+Solution
+===============================================================HTML code=====================================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Zomato Page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="header">Zomato Page</h1>
+
+    <div class="item">
+      <img src="img1.jpg" alt="Item 1">
+      <div>
+        <p class="p1">Dish 1</p>
+        <span class="price">Price: ₹200</span>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="img2.jpg" alt="Item 2">
+      <div>
+        <p class="p2">Dish 2</p>
+        <span class="price">Price: ₹250</span>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="img3.jpg" alt="Item 3">
+      <div>
+        <p class="p3">Dish 3</p>
+        <span class="price">Price: ₹300</span>
+      </div>
+    </div>
+
+    <p class="location">Location 1: Delhi</p>
+    <p class="location">Location 2: Mumbai</p>
+
+    <p class="footer">Copyright 2022. All right reserved</p>
+  </div>
+</body>
+</html>
+
+
+===========================================================CSS Code==================================================================================
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 400px;
+  margin: 0 auto;
+  border: 2px solid black;
+  padding: 10px;
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.header {
+  text-align: center;
+  padding: 10px;
+  font-size: 24px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.item {
+  display: flex;
+  border: 1px solid black;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: white;
+}
+
+.item img {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
+.p1 {
+  color: blue;
+}
+
+.p2 {
+  color: brown;
+}
+
+.p3 {
+  color: green;
+}
+
+.price {
+  color: grey;
+}
+
+.location {
+  background-color: yellow;
+  padding: 5px;
+  border: 1px solid black;
+  margin: 5px 0;
+}
+
+.footer {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid black;
+  background-color: white;
+}
