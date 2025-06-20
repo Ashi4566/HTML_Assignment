@@ -1,0 +1,147 @@
+==================================Question==================================
+
+Using modern CSS techniques like CSS Grid and Flexbox, create a complex, responsive webpage layout with the following structure. 
+The goal is to demonstrate the power of combining different layout models to build a component-based design.
+The layout should consist of:
+A Main Container: This will be the overall wrapper for the page.
+A Two-Column Structure: Inside the main container, create a two-column layout with a narrow sidebar on the left and a wider main content area on the right.
+The Sidebar (Left Column): This sidebar should contain four green-colored boxes of varying heights, stacked vertically.
+The Main Content Area (Right Column): This area should be further divided into three distinct horizontal sections:
+A "Header" Section (Top): Containing multiple beige-colored boxes of different widths and heights, arranged in a wrapping, flexible manner.
+A "Middle" Section: Containing several light blue boxes, also arranged flexibly with varying sizes, including one that is significantly wider than the others.
+A "Footer" Section (Bottom): Containing three equally-sized grey boxes arranged side-by-side.
+All boxes should have a visible border, and there should be a consistent gap between all layout elements.
+
+==================================Answer=============================================
+
+HTML and CSS Code
+This solution uses CSS Grid for the main page structure (sidebar + main content) and Flexbox within each of the main content sections to arrange the items. 
+This "macro-grid, micro-flex" approach is very powerful and common in modern web design.
+HTML 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complex CSS Grid and Flexbox Layout</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main-container">
+
+        <!-- Sidebar (Left Column) -->
+        <aside class="sidebar">
+            <div class="box green" style="height: 80px;"></div>
+            <div class="box green" style="height: 120px;"></div>
+            <div class="box green" style="height: 120px;"></div>
+            <div class="box green" style="height: 150px;"></div>
+        </aside>
+
+        <!-- Main Content (Right Column) -->
+        <main class="main-content">
+
+            <!-- Top Beige Section -->
+            <section class="top-section">
+                <div class="box beige" style="width: 150px; height: 200px;"></div>
+                <div class="box beige" style="width: 200px; height: 100px;"></div>
+                <div class="box beige" style="width: 120px; height: 220px;"></div>
+                <div class="box beige" style="width: 250px; height: 80px;"></div>
+                <div class="box beige" style="width: 180px; height: 80px; align-self: flex-end;"></div>
+            </section>
+
+            <!-- Middle Blue Section -->
+            <section class="middle-section">
+                <div class="box blue"></div>
+                <div class="box blue"></div>
+                <div class="box blue" style="width: 50px;"></div>
+                <div class="box blue" style="flex-grow: 4;"></div>
+            </section>
+
+            <!-- Bottom Grey Section -->
+            <section class="bottom-section">
+                <div class="box grey"></div>
+                <div class="box grey"></div>
+                <div class="box grey"></div>
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
+
+CSS
+
+/* Basic Reset and Body Styles */
+body {
+    margin: 0;
+    padding: 10px;
+    background-color: #f0f0f0;
+    font-family: sans-serif;
+}
+
+/* 1. Main Container using CSS Grid for the overall layout */
+.main-container {
+    display: grid;
+    /* Create two columns: a sidebar (1fr) and main content (4fr) */
+    grid-template-columns: 1fr 4fr; 
+    gap: 10px; /* Space between sidebar and main content */
+    height: 95vh;
+    border: 3px solid black;
+    padding: 10px;
+}
+
+/* 2. Sidebar styling */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* 3. Main Content Area using CSS Grid for its internal sections */
+.main-content {
+    display: grid;
+    /* Create three rows for the three sections */
+    grid-template-rows: auto 1fr auto;
+    gap: 10px;
+}
+
+/* 4. Section Styling using Flexbox to arrange the inner boxes */
+.top-section,
+.middle-section,
+.bottom-section {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+    gap: 10px;
+    padding: 10px;
+    border: 2px solid black;
+}
+
+/* 5. Generic Box Styling */
+.box {
+    border: 2px solid black;
+    min-width: 80px; /* Minimum width for smaller boxes */
+    min-height: 50px; /* Minimum height for smaller boxes */
+    flex-grow: 1; /* Allows boxes to grow to fill space */
+}
+
+/* 6. Color-specific styles */
+.green {
+    background-color: #a3cc3a;
+}
+
+.beige {
+    background-color: #f0e6c2;
+}
+
+.blue {
+    background-color: #a7d8e8;
+}
+
+.grey {
+    background-color: #808080;
+    height: 100px; /* Fixed height for the bottom grey boxes */
+}
