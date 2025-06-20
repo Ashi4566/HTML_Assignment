@@ -1,0 +1,86 @@
+================================================Question================================================================================= 
+
+Building a Flexible and Wrapping Layout with Flexbox
+Create a large section with an orange background (#d9822b) that will act as a flex container.
+Inside this container, place 12 small <div> elements. 
+Each of these small divs should be a light sandy color (#e8c3a1), have a fixed size (e.g., 100px by 60px), and display text like "HTML", "CSS", "JS", etc.
+Using CSS Flexbox, arrange these 12 inner divs so that they:
+Start from the left.
+Automatically wrap onto the next line when they run out of space in the container.
+Have the space on each line distributed evenly between them.
+If there are multiple lines of items, ensure the space is also distributed between the lines, pushing the first line to the top and the last line to the bottom of the container.
+
+===============================================Solution========================================================================================
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solution 2: Flexbox Layout</title>
+    <style>
+        /* Basic page styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+        }
+        
+        h1 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        /* The flex container itself */
+        .flex-container {
+            background-color: #d9822b; /* Orange background */
+            padding: 20px;
+            height: 300px; /* A fixed height is required to see align-content in action */
+
+            /* --- CORE FLEXBOX PROPERTIES --- */
+            display: flex;
+
+            /* Allows items to move to the next line if there isn't enough space */
+            flex-wrap: wrap; 
+            
+            /* Distributes space BETWEEN items along the horizontal axis */
+            justify-content: space-between;
+
+            /* Distributes space BETWEEN the lines of wrapped items along the vertical axis */
+            align-content: space-between;
+        }
+
+        /* The individual items inside the container */
+        .flex-item {
+            background-color: #e8c3a1; /* Light sandy color */
+            width: 100px;
+            height: 60px;
+            font-weight: bold;
+
+            /* Bonus: These lines make the item itself a flex container to easily center its text */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Question 2 Solution: Flexbox Layout</h1>
+
+    <div class="flex-container">
+        <div class="flex-item">HTML</div>
+        <div class="flex-item">CSS</div>
+        <div class="flex-item">JS</div>
+        <div class="flex-item">React JS</div>
+        <div class="flex-item">HTML</div>
+        <div class="flex-item">CSS</div>
+        <div class="flex-item">JS</div>
+        <div class="flex-item">JS</div>
+        <div class="flex-item">React JS</div>
+        <div class="flex-item">HTML</div>
+        <div class="flex-item">CSS</div>
+        <div class="flex-item">JS</div>
+    </div>
+
+</body>
+</html>
