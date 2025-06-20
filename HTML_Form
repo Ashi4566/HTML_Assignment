@@ -1,0 +1,120 @@
+=====================Question========================================================================
+
+Using semantic HTML and modern CSS, create a comprehensive and well-structured Student Registration Form. The form should be user-friendly, accessible, and demonstrate a variety of input types.
+The form must be divided into the following sections using appropriate grouping elements:
+Personal Information:
+Full Name (Text input, required)
+Email Address (Email input, required)
+Date of Birth (Date picker)
+Student ID (Number input)
+Course Selection:
+Degree Program: A set of radio buttons for "Bachelor's", "Master's", and "PhD". Only one can be selected.
+Major: A dropdown menu (<select>) with options like "Computer Science", "Electrical Engineering", "Business Administration", and "Fine Arts".
+Elective Courses: A group of checkboxes allowing multiple selections, such as "Machine Learning", "Web Development", "Data Structures", and "Public Speaking".
+Additional Information:
+Profile Picture: A file upload button.
+Personal Statement: A multi-line text area for students to write a brief introduction.
+Submission:
+An "I agree to the terms and conditions" checkbox that must be checked to submit.
+A "Register" submit button.
+A "Reset Form" button to clear all fields.
+The final form should be styled to be clean, readable, and visually organized, with clear labels for all inputs.
+
+==========================Solution=====================================================================
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form (HTML Only)</title>
+</head>
+<body>
+
+    <form action="#" method="post">
+        <h1>Student Registration</h1>
+
+        <!-- Section 1: Personal Information -->
+        <fieldset>
+            <legend>Personal Information</legend>
+            
+            <label for="full-name">Full Name:</label><br>
+            <input type="text" id="full-name" name="student_name" placeholder="Enter your full name" required>
+            <br><br>
+
+            <label for="email">Email Address:</label><br>
+            <input type="email" id="email" name="student_email" placeholder="you@example.com" required>
+            <br><br>
+            
+            <label for="dob">Date of Birth:</label><br>
+            <input type="date" id="dob" name="student_dob">
+            <br><br>
+            
+            <label for="student-id">Student ID:</label><br>
+            <input type="number" id="student-id" name="student_id" placeholder="e.g., 12345">
+        </fieldset>
+        
+        <hr>
+
+        <!-- Section 2: Course Selection -->
+        <fieldset>
+            <legend>Course Selection</legend>
+            
+            <p><strong>Degree Program:</strong></p>
+            <label><input type="radio" name="degree" value="bachelors"> Bachelor's</label><br>
+            <label><input type="radio" name="degree" value="masters"> Master's</label><br>
+            <label><input type="radio" name="degree" value="phd"> PhD</label>
+            <br><br>
+
+            <label for="major"><strong>Major:</strong></label><br>
+            <select id="major" name="student_major">
+                <option value="">--Please choose an option--</option>
+                <option value="cs">Computer Science</option>
+                <option value="ee">Electrical Engineering</option>
+                <option value="ba">Business Administration</option>
+                <option value="fa">Fine Arts</option>
+            </select>
+            <br><br>
+
+            <p><strong>Elective Courses (select all that apply):</strong></p>
+            <label><input type="checkbox" name="electives" value="ml"> Machine Learning</label><br>
+            <label><input type="checkbox" name="electives" value="web"> Web Development</label><br>
+            <label><input type="checkbox" name="electives" value="dsa"> Data Structures</label><br>
+            <label><input type="checkbox" name="electives" value="ps"> Public Speaking</label>
+        </fieldset>
+
+        <hr>
+
+        <!-- Section 3: Additional Information -->
+        <fieldset>
+            <legend>Additional Information</legend>
+            
+            <label for="profile-pic"><strong>Upload Profile Picture:</strong></label><br>
+            <input type="file" id="profile-pic" name="student_photo">
+            <br><br>
+            
+            <label for="statement"><strong>Personal Statement:</strong></label><br>
+            <textarea id="statement" name="personal_statement" rows="6" cols="50" placeholder="Tell us a little about yourself..."></textarea>
+        </fieldset>
+
+        <hr>
+
+        <!-- Section 4: Submission -->
+        <fieldset>
+            <legend>Submission</legend>
+            
+            <label>
+                <input type="checkbox" name="terms" required>
+                I agree to the terms and conditions
+            </label>
+            <br><br>
+
+            <!-- Using input types for submit and reset is common in non-CSS forms -->
+            <input type="submit" value="Register">
+            <input type="reset" value="Reset Form">
+        </fieldset>
+
+    </form>
+
+</body>
+</html>
